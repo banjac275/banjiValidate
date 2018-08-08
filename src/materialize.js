@@ -7097,9 +7097,9 @@ $jscomp.polyfill = function (e, r, p, m) {
       if ($inputElement.is(input_selector)) {
         var selector = '.prefix';
 
-        if ($inputElement[0].value.length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === null) {
+        /* if ($inputElement[0].value.length === 0 && $inputElement[0].validity.badInput !== true && $inputElement.attr('placeholder') === null) {
           selector += ', label';
-        }
+        } */
         $inputElement.siblings(selector).removeClass('active');
         M.validate_field($inputElement);
       }

@@ -1,0 +1,11 @@
+@import './colors';
+
+.input--ok {
+  border-bottom: 1px solid $def-input-color !important;
+  box-shadow: 0 1px 0 0 $def-input-color !important;
+}
+
+.input--err {
+  border-bottom: 1px solid $err-input-color !important;
+  box-shadow: 0 1px 0 0 $err-input-color !important;
+}
