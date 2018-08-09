@@ -9,3 +9,19 @@
   border-bottom: 1px solid $err-input-color !important;
   box-shadow: 0 1px 0 0 $err-input-color !important;
 }
+
+.input__span--color {
+  color: $err-input-color;
+  display: block;
+  height: 15px;
+}
+
+.input--ok-custom {
+  border-bottom: 1px solid $def-input-color-custom !important;
+  box-shadow: 0 1px 0 0 $def-input-color-custom !important;
+}
+
+.input--err-custom {
+  border-bottom: 1px solid $def-input-color-custom !important;
+  box-shadow: 0 1px 0 0 $def-input-color-custom !important;
+}
