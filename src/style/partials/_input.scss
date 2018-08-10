@@ -22,6 +22,6 @@
 }
 
 .input--err-custom {
-  border-bottom: 1px solid $def-input-color-custom !important;
-  box-shadow: 0 1px 0 0 $def-input-color-custom !important;
+  border-bottom: 1px solid $err-input-color-custom !important;
+  box-shadow: 0 1px 0 0 $err-input-color-custom !important;
 }
