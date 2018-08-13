@@ -112,6 +112,9 @@ class BanjiValidate {
             else if(input.value > this.doc.forms[element][index]["maxVal"] && inputType === "number") message = `Number mustn\'t be above ${this.doc.forms[element][index]["maxVal"]}`;
             else message = "";
             break;
+          case "dirty":
+            
+            break;
         }
       }
       if(message !== "") messageCheck = true;
@@ -158,34 +161,40 @@ document.querySelector("#submitted").addEventListener("click", () => {
         "firstName" : {
           "required": true,
           "minLength": 6,
-          "maxLength": 30
+          "maxLength": 30,
+          "dirty": false
         },
         "lastName" : {
           "required": true,
           "minLength": 4,
-          
+          "dirty": false
         },
         "email" : {
           "required": true,
-          "emailValidation": true
+          "emailValidation": true,
+          "dirty": false
         },
         "password" : {
           "required": true,
           "minLength": 8,
-          "checkWriting": true
+          "checkWriting": true,
+          "dirty": false
         },
         "confirmPassword" : {
           "required": true,
           "minLength": 8,
-          "compareWith": "password"
+          "compareWith": "password",
+          "dirty": false
         },
         "date" : {
-          "required": false
+          "required": false,
+          "dirty": false
         },
         "numbers" : {
           "required": true,
           "minVal": 1,
-          "maxVal": 15
+          "maxVal": 15,
+          "dirty": false
         }
       }
     },
