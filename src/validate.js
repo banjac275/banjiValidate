@@ -18,6 +18,7 @@ class BanjiValidate {
         this.ids.forEach((id, ind) => {
           let input = document.querySelector("#" + this.ids[ind]);
           this.inputs.push(input);
+          if (this.doc.forms[el][id]["dirty"] === undefined) this.doc.forms[el][id]["dirty"] = false;
           let inputKeys = Object.getOwnPropertyNames(this.doc.forms[el][id]);
           this.checkKeys(input, inputKeys, el, id);
         })
@@ -113,11 +114,15 @@ class BanjiValidate {
             else message = "";
             break;
           case "dirty":
-            
+            if(this.doc.forms[element][index]["dirty"] === false) {
+              input.addEventListener("keyup", () => {
+                if(message !== "" || input.val === "" && this.doc.forms[element][index]["required"]) this.doc.forms[element][index]["dirty"] = true;
+              })
+            }
             break;
         }
       }
-      if(message !== "") messageCheck = true;
+      if(message !== "" && this.doc.forms[element][index]["dirty"]) messageCheck = true;
     }
     (messageCheck === true) ? this.inputCheckFill(input, message, true) : this.inputCheckFill(input, message, false);
   }
@@ -161,40 +166,33 @@ document.querySelector("#submitted").addEventListener("click", () => {
         "firstName" : {
           "required": true,
           "minLength": 6,
-          "maxLength": 30,
-          "dirty": false
+          "maxLength": 30
         },
         "lastName" : {
           "required": true,
-          "minLength": 4,
-          "dirty": false
+          "minLength": 4
         },
         "email" : {
           "required": true,
-          "emailValidation": true,
-          "dirty": false
+          "emailValidation": true
         },
         "password" : {
           "required": true,
           "minLength": 8,
-          "checkWriting": true,
-          "dirty": false
+          "checkWriting": true
         },
         "confirmPassword" : {
           "required": true,
           "minLength": 8,
-          "compareWith": "password",
-          "dirty": false
+          "compareWith": "password"
         },
         "date" : {
-          "required": false,
-          "dirty": false
+          "required": false
         },
         "numbers" : {
           "required": true,
           "minVal": 1,
-          "maxVal": 15,
-          "dirty": false
+          "maxVal": 15
         }
       }
     },
