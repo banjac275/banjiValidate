@@ -18,7 +18,7 @@ class BanjiValidate {
         this.ids.forEach((id, ind) => {
           let input = document.querySelector("#" + this.ids[ind]);
           this.inputs.push(input);
-          if (this.doc.forms[el][id]["dirty"] === undefined) this.doc.forms[el][id]["dirty"] = false;
+          (this.doc.forms[el][id]["dirty"] === undefined) ? this.doc.forms[el][id]["dirty"] = false : this.doc.forms[el][id]["dirty"] = true;
           let inputKeys = Object.getOwnPropertyNames(this.doc.forms[el][id]);
           this.checkKeys(input, inputKeys, el, id);
         })
@@ -115,8 +115,10 @@ class BanjiValidate {
             break;
           case "dirty":
             if(this.doc.forms[element][index]["dirty"] === false) {
-              input.addEventListener("keyup", () => {
-                if(message !== "" || input.val === "" && this.doc.forms[element][index]["required"]) this.doc.forms[element][index]["dirty"] = true;
+              ["keyup", "focus", "click"].forEach(ev => {
+                input.addEventListener(ev, () => {
+                  if(message !== "") this.doc.forms[element][index]["dirty"] = true;
+                })
               })
             }
             break;
