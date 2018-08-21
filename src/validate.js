@@ -1,4 +1,5 @@
 import materialize from './materialize'
+import { BanjiValidate2 } from './validate2';
 
 class BanjiValidate {
   constructor(doc) {
@@ -159,48 +160,51 @@ class BanjiValidate {
       })
     }
   }
-}
+}//initialization
+let validated = new BanjiValidate2({
+  "form": {
+    "regular": {
+      "firstName" : {
+        "required": true,
+        "minLength": 6,
+        "maxLength": 30
+      },
+      "lastName" : {
+        "required": true,
+        "minLength": 4
+      },
+      "email" : {
+        "required": true,
+        "emailValidation": true
+      },
+      "password" : {
+        "required": true,
+        "minLength": 8,
+        "checkWriting": true
+      },
+      "confirmPassword" : {
+        "required": true,
+        "minLength": 8,
+        "compareWith": "password"
+      },
+      "date" : {
+        "required": false
+      },
+      "numbers" : {
+        "required": true,
+        "minVal": 1,
+        "maxVal": 15
+      }
+    }
+  },
+  "options": {
+    "customClassOk": "input--ok-custom",
+    "customClassError": "input--err-custom",
+    "handleErrors": false
+  }    
+})
 
 document.querySelector("#submitted").addEventListener("click", () => {
-  new BanjiValidate({
-    "forms": {
-      "regular": {
-        "firstName" : {
-          "required": true,
-          "minLength": 6,
-          "maxLength": 30
-        },
-        "lastName" : {
-          "required": true,
-          "minLength": 4
-        },
-        "email" : {
-          "required": true,
-          "emailValidation": true
-        },
-        "password" : {
-          "required": true,
-          "minLength": 8,
-          "checkWriting": true
-        },
-        "confirmPassword" : {
-          "required": true,
-          "minLength": 8,
-          "compareWith": "password"
-        },
-        "date" : {
-          "required": false
-        },
-        "numbers" : {
-          "required": true,
-          "minVal": 1,
-          "maxVal": 15
-        }
-      }
-    },
-    "options": {
-      "customClassOk": "input--ok-custom",
-      "customClassError": "input--err-custom"
-    }    
-  })
+  validated.init()
+  console.log(validated.returnResults())
 })
