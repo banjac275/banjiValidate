@@ -6525,12 +6525,26 @@ input[type=range]::-ms-thumb {
     text-align: center;
     margin-top: 1.2rem; } }
 
-/* input {
-  border-bottom: 1px solid $def-input-color;
-  color: $def-input-color;
-} */
+.input--ok {
+  border-bottom: 1px solid #26a69a !important;
+  box-shadow: 0 1px 0 0 #26a69a !important; }
+
 .input--err {
-  border-bottom: 1px solid #ff5a5a; }
+  border-bottom: 1px solid #ff5a5a !important;
+  box-shadow: 0 1px 0 0 #ff5a5a !important; }
+
+.input__span--color {
+  color: #ff5a5a;
+  display: block;
+  height: 15px; }
+
+.input--ok-custom {
+  border-bottom: 1px solid #2682a6 !important;
+  box-shadow: 0 1px 0 0 #2682a6 !important; }
+
+.input--err-custom {
+  border-bottom: 1px solid #ff5aad !important;
+  box-shadow: 0 1px 0 0 #ff5aad !important; }
 
 * {
   box-sizing: border-box; }

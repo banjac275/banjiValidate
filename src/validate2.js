@@ -6,11 +6,13 @@ export class BanjiValidate2 {
       this.okClass = "input--ok";
       this.errClass = "input--err"; 
       this.results = {};
+      this.isSubmited = false;
       if(Object.keys(this.doc).length > 0) this.init()
       else console.log("error: doc empty")
     }
-    init() {
+    init(isSubmit = false) {
       let keys = Object.getOwnPropertyNames(this.doc.form);
+      this.isSubmited = isSubmit;
       keys.forEach(el => {    
         this.ids = Object.getOwnPropertyNames(this.doc.form[el]);
         if (this.ids.length > 0) {
@@ -139,7 +141,7 @@ export class BanjiValidate2 {
         }
         if(message !== "") messageCheck = true;
       }
-      (messageCheck === true && this.doc.options["handleErrors"]) ? this.inputCheckFill(input, message, true) : this.inputCheckFill(input, message, false);
+      (messageCheck === true && this.doc.options["handleErrors"] && this.isSubmited) ? this.inputCheckFill(input, message, true) : this.inputCheckFill(input, message, false);
     }
     inputCheckFill(inp, message, check) {
       let notificationContainer = inp.parentNode.children;

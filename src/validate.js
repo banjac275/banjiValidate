@@ -205,6 +205,6 @@ let validated = new BanjiValidate2({
 })
 
 document.querySelector("#submitted").addEventListener("click", () => {
-  validated.init()
+  validated.init(true)
   console.log(validated.returnResults())
 })
